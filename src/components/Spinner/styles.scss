@@ -1,0 +1,84 @@
+$size-map: (
+    xsmall      : 25px,
+    small       : 50px,
+    medium      : 100px,
+    large       : 150px,
+    huge        : 200px,
+    responsive  : 100%,
+);
+
+%spinner {
+    background-color: transparent;
+    position: relative;
+    border-radius: 50%;
+    cursor: pointer;
+    display: inline-block;
+    animation: spin linear 0s infinite;
+    animation-play-state: running;
+    animation-duration: var(--speed);
+
+    &:hover {
+        animation-play-state: paused;
+    }
+}
+
+.cross {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    position: absolute;
+
+    &:nth-of-type(2) {
+        transform: rotate(45deg);
+    }
+}
+
+.bar {
+    border-radius: 10px;
+    background-color: var(--color, #333);
+    position: absolute;
+
+    &-1,
+    &-3 {
+        width: calc(100%*3 / 10);
+        aspect-ratio: 4;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    &-1 {
+        left: calc(100%*3 / 100);
+    }
+    &-3 {
+        right: calc(100%*3 / 100);
+    }
+    &-2,
+    &-4 {
+        height: calc(100%*3 / 10);
+        aspect-ratio: 1 / 4;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    &-2 {
+        top: calc(100%*3 / 100);
+    }
+    &-4 {
+        bottom: calc(100%*3 / 100);
+    }
+}
+
+@each $name, $size in $size-map {
+    .spinner--#{$name} {
+        width: $size;
+        aspect-ratio: 1;
+        @extend %spinner;
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

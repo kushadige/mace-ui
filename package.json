@@ -4,7 +4,7 @@
     "type": "git",
     "url": "git@github.com:kushadige/mace-ui.git"
   },
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Example component library for react",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
