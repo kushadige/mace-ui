@@ -1,0 +1,78 @@
+.fieldset {
+    position: relative;
+    background: var(--background);
+    border: 2px solid var(--borderColor);
+    border-radius: var(--borderRadius);
+    display: inline-flex;
+    align-items: center;
+    height: 40px;
+    width: var(--width);
+    cursor: pointer;
+}
+
+.legend {
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+    height: 0;
+    line-height: 0;
+    margin-right: auto;
+    padding: 0 5px;
+    color: var(--labelColor);
+    transition: all 0.1s linear;
+    z-index: 1;
+    &--active {
+        position: relative;
+        top: 0%;
+        left: 0%;
+        transform: translateX(0);
+        font-size: inherit;
+    }
+}
+
+.selected-option {
+    width: var(--width);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+    padding: 0 5px;
+    pointer-events: none;
+}
+
+.dropdown {
+    display: flex;
+    flex-direction: column;
+    min-width: 110%;
+    background: var(--optionBackground);
+    transform: scaleY(0);
+    transform-origin: top;
+    overflow: hidden;
+    position: absolute;
+    top: 110%;
+    left: -5px;
+    border: none;
+    text-align: center;
+    border-radius: inherit;
+    transition: transform 0.2s ease-out;
+    z-index: 2;
+    &--active {
+        transform: scaleY(1);
+    }
+}
+
+.option {
+    color: var(--optionTextColor);
+    background: inherit;
+    padding: 8px 5px;
+    // transition: "background 0.1s ease";
+    &:hover {
+        background: var(--optionBackgroundOnHover);
+    };
+    &--selected {
+        background: var(--optionBackgroundOnSelected);
+    }
+}
